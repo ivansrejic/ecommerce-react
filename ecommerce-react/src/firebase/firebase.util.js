@@ -1,0 +1,58 @@
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+// import 'firebase/auth';
+
+// const config = {
+//     apiKey: "AIzaSyAifbVyU_uhnNoz7C_PuBlR7U7EAnkgxp0",
+//     authDomain: "ecommerce-react-f13a7.firebaseapp.com",
+//     projectId: "ecommerce-react-f13a7",
+//     storageBucket: "ecommerce-react-f13a7.appspot.com",
+//     messagingSenderId: "984707636601",
+//     appId: "1:984707636601:web:063b1950c91065035e63a8",
+//     measurementId: "G-VP95ZC2H7V"
+//   }
+
+//   firebase.initializeApp(config);
+
+//   export const auth = firebase.auth();
+//   export const firestore = firebase.firestore();
+
+//   const provider = new firebase.auth.GoogleAuthProvider();
+//   provider.setCustomParameters({ prompt: 'select_account' });
+//   export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+//   export default firebase;
+
+
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const config = {
+    apiKey: "AIzaSyAifbVyU_uhnNoz7C_PuBlR7U7EAnkgxp0",
+    authDomain: "ecommerce-react-f13a7.firebaseapp.com",
+    projectId: "ecommerce-react-f13a7",
+    storageBucket: "ecommerce-react-f13a7.appspot.com",
+    messagingSenderId: "984707636601",
+    appId: "1:984707636601:web:063b1950c91065035e63a8",
+    measurementId: "G-VP95ZC2H7V"
+  }
+
+const firebase = initializeApp(config);
+
+const firestore = getFirestore(firebase);
+
+const auth = getAuth(firebase);
+const provider = new GoogleAuthProvider();
+
+provider.setCustomParameters({ prompt: 'select_account' });
+
+const signInWithGoogle = () => 
+       signInWithPopup(auth, provider);
+  
+  
+  
+export default firebase;
+export { firestore, auth, provider, signInWithGoogle };
+
+
